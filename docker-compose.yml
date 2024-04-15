@@ -1,0 +1,22 @@
+version: '3'
+services:
+  database:
+    image: postgres:14.11
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: balac
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web-app:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+volumes:
+  postgres_data:
