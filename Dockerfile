@@ -13,7 +13,7 @@ RUN apk update && apk add --no-cache \
 RUN gem install bundler -v '2.5.7'
 
 # Copy Gemfile and Gemfile.lock separately to optimize caching
-COPY Gemfile Gemfile.lock ./
+#COPY Gemfile Gemfile.lock ./
 
 # Install gems
 RUN bundle config set --local without 'development test' && bundle install
